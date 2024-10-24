@@ -31,20 +31,20 @@ You need complete [Global Configuration](./configure) for Pomerium to become ful
 
 ## Metrics
 
-Pomerium provides a comprehensive set of Prometheus style metrics. Assuming you are running a [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) in your cluster, you may create the following resource to enable metrics collection.
+Pomerium provides a comprehensive set of Prometheus style metrics. Assuming you are running a [Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) in your cluster, you may create the following resource to enable metrics collection (.
 
 ```yaml
 apiVersion: monitoring.coreos.com/v1
 kind: ServiceMonitor
 metadata:
   name: pomerium
-  namespace: pomerium-master-postgres
+  namespace: pomerium
 spec:
   endpoints:
     - port: metrics
   selector:
     matchLabels:
-      app.kubernetes.io/instance: pomerium
+      app.kubernetes.io/name: pomerium
 ```
 
 ## Advanced
